@@ -21,22 +21,22 @@
 
 | 区分 | 課題 | 状態 | 現在地 |
 |---|---|---|---|
-| 帳票 | [TMT_IBPJ-2]("../../knowledge/backlog/TMT_IBPJ-2.md") | 完了 | 大光銀行向け帳票PDFサンプルの共有は完了 |
-| 帳票 | [TMT_IBPJ-24]("../../knowledge/backlog/TMT_IBPJ-24.md") | 未対応 | トマト向けレイアウト案の提示が未着手。最終FIX期限は8/31 |
-| CSV・ヒアリング | [TMT_IBPJ-6]("../../knowledge/backlog/TMT_IBPJ-6.md") | 処理中 | 最新ヒアリングシートの確認中。期限は8/21 |
-| CSV・バリデーション | [TMT_IBPJ-20]("../../knowledge/backlog/TMT_IBPJ-20.md") | 処理中 | 共通バリデーションのExcelデータ共有待ち。期限8/3を超過 |
-| 口座開設・ローン連携 | [TMT_IBPJ-23]("../../knowledge/backlog/TMT_IBPJ-23.md") | 処理中 | ローン申込有無フラグ追加と口座種別の読み替えを確認中。8/20に仕様確定 |
-| バックオフィス | [TMT_IBPJ-21]("../../knowledge/backlog/TMT_IBPJ-21.md") | 処理中 | 新アプリでの事務フロー、認証情報の扱い、ローン連携を確認中 |
-| パスワード変換 | [TMT_IBPJ-22]("../../knowledge/backlog/TMT_IBPJ-22.md") | 処理中 | 暗証番号・仮パスワードの変換表を確認中 |
-| テスト環境 | [TMT_IBPJ-19]("../../knowledge/backlog/TMT_IBPJ-19.md")、[TMT_IBPJ-26]("../../knowledge/backlog/TMT_IBPJ-26.md") | 完了 | リダイレクトURI・テスト口座の個別確認は完了 |
-| 認証情報 | [TMT_IBPJ-25]("../../knowledge/backlog/TMT_IBPJ-25.md") | 完了 | 仮ログインパスワードと仮確認パスワードの同一値許容は完了 |
+| 帳票 | [TMT_IBPJ-2]("../../knowledge/backlog/tomato/TMT_IBPJ-2.md") | 完了 | 大光銀行向け帳票PDFサンプルの共有は完了 |
+| 帳票 | [TMT_IBPJ-24]("../../knowledge/backlog/tomato/TMT_IBPJ-24.md") | 未対応 | トマト向けレイアウト案の提示が未着手。最終FIX期限は8/31 |
+| CSV・ヒアリング | [TMT_IBPJ-6]("../../knowledge/backlog/tomato/TMT_IBPJ-6.md") | 処理中 | 最新ヒアリングシートの確認中。期限は8/21 |
+| CSV・バリデーション | [TMT_IBPJ-20]("../../knowledge/backlog/tomato/TMT_IBPJ-20.md") | 処理中 | 共通バリデーションのExcelデータ共有待ち。期限8/3を超過 |
+| 口座開設・ローン連携 | [TMT_IBPJ-23]("../../knowledge/backlog/tomato/TMT_IBPJ-23.md") | 処理中 | ローン申込有無フラグ追加と口座種別の読み替えを確認中。8/20に仕様確定 |
+| バックオフィス | [TMT_IBPJ-21]("../../knowledge/backlog/tomato/TMT_IBPJ-21.md") | 処理中 | 新アプリでの事務フロー、認証情報の扱い、ローン連携を確認中 |
+| パスワード変換 | [TMT_IBPJ-22]("../../knowledge/backlog/tomato/TMT_IBPJ-22.md") | 処理中 | 暗証番号・仮パスワードの変換表を確認中 |
+| テスト環境 | [TMT_IBPJ-19]("../../knowledge/backlog/tomato/TMT_IBPJ-19.md")、[TMT_IBPJ-26]("../../knowledge/backlog/tomato/TMT_IBPJ-26.md") | 完了 | リダイレクトURI・テスト口座の個別確認は完了 |
+| 認証情報 | [TMT_IBPJ-25]("../../knowledge/backlog/tomato/TMT_IBPJ-25.md") | 完了 | 仮ログインパスワードと仮確認パスワードの同一値許容は完了 |
 
 上記以外にも、画面遷移・文言・メール設定・テストカード・勘定系テストカレンダー・脆弱性診断などに処理中または未対応の課題が残っている。帳票・CSVだけを見ると、帳票サンプルの前提確認は終わったがレイアウトFIXは未完了、CSVは項目方針の一部が決まった段階で、実装・変換仕様まで完了した状態ではない。
 
 ### 帳票
-- 大光銀行向け帳票PDFサンプルの共有は完了（[TMT_IBPJ-2]("../../knowledge/backlog/TMT_IBPJ-2.md")）
+- 大光銀行向け帳票PDFサンプルの共有は完了（[TMT_IBPJ-2]("../../knowledge/backlog/tomato/TMT_IBPJ-2.md")）
 - 大光ベースのちょい変更で社内調整中（諸届の帳票は変更なし）
-- 変更箇所を反映したトマト向けレイアウト案の提示は未対応（[TMT_IBPJ-24]("../../knowledge/backlog/TMT_IBPJ-24.md")）
+- 変更箇所を反映したトマト向けレイアウト案の提示は未対応（[TMT_IBPJ-24]("../../knowledge/backlog/tomato/TMT_IBPJ-24.md")）
   - サンプル作成スレッド: https://secsol-buf2.slack.com/archives/C0AKCAXARSN/p1786690975839599
 - 未確定点：口座開設時に出すIB契約表について、「IB新規と同じ変更を加える」のか「変更後IB新規と同一フォーマットをそのまま出す」のか解釈が曖昧
 - 8/31までにレイアウト案を提示し、銀行確認後にサンプルを完成させてFIXする必要がある
@@ -44,7 +44,7 @@
 ### CSV
 - 口座開設・諸届は現行の銀行CSV項目をベースにする方針
 - インターネットバンキング申込は、こちらから提示したヒアリングシートをベースにする方針（現行は出力していない新規項目）
-- ただし、ヒアリングシートの確認依頼はBacklog上まだ処理中（[TMT_IBPJ-6]("../../knowledge/backlog/TMT_IBPJ-6.md")、期限8/21）。8/18のコメントで以下の決定事項が提示された:
+- ただし、ヒアリングシートの確認依頼はBacklog上まだ処理中（[TMT_IBPJ-6]("../../knowledge/backlog/tomato/TMT_IBPJ-6.md")、期限8/21）。8/18のコメントで以下の決定事項が提示された:
   - 住所項目は漢字・カナそれぞれ1項目で表示
   - それ以外の空カラム（値なし）項目は削除
   - 新アプリで取得できなくなった項目は削除
@@ -52,13 +52,13 @@
   - 高井 莉子の8/18回答に対するSBIの最終確認
   - CSV各項目の定義（出力形式、桁数、選択肢）
   - 口座種別の出し方（ローン申込有無による読み替えを含む）
-    - チケット: [TMT_IBPJ-23]("../../knowledge/backlog/TMT_IBPJ-23.md")。8/20にIBアプリ・カスタマーダッシュボードは和名、CSVはコード値（1/2/3/4）で確定。
-- 共通バリデーションのExcelデータ共有も処理中で、期限8/3を超過（[TMT_IBPJ-20]("../../knowledge/backlog/TMT_IBPJ-20.md")）。7/31にExcel提示されたが大光仕様混在・CSV項目不足・属性桁数不足の指摘があり、正しいトマト向けデータの再提出が必要。ミドルネームの出力形式も銀行確認待ち。
+    - チケット: [TMT_IBPJ-23]("../../knowledge/backlog/tomato/TMT_IBPJ-23.md")。8/20にIBアプリ・カスタマーダッシュボードは和名、CSVはコード値（1/2/3/4）で確定。
+- 共通バリデーションのExcelデータ共有も処理中で、期限8/3を超過（[TMT_IBPJ-20]("../../knowledge/backlog/tomato/TMT_IBPJ-20.md")）。7/31にExcel提示されたが大光仕様混在・CSV項目不足・属性桁数不足の指摘があり、正しいトマト向けデータの再提出が必要。ミドルネームの出力形式も銀行確認待ち。
 - 先行対応：回答を待たなくても方針が決まっている修正（削除など）は先に開発チームへ連携し着手してもらう
 - 全項目FIX後：ヒアリングシートをマスターとして更新（銀行要望の型・桁数・許容文字種などの定義情報を追記）。CD送信時の変換（日付フォーマット等）があるため、アプリ側チーム＆CD実装チームとのすり合わせが必要
 
 ### CD
-- 共通バリデーションのデータ共有は処理中（[TMT_IBPJ-20]("../../knowledge/backlog/TMT_IBPJ-20.md")）
+- 共通バリデーションのデータ共有は処理中（[TMT_IBPJ-20]("../../knowledge/backlog/tomato/TMT_IBPJ-20.md")）
 - ミドルネームありの場合の出力形式は銀行ボール、回答フォロー中
   - 既存参照: https://sbinbs.backlog.com/view/TMT_IBPJ-20#comment-790980739
 
