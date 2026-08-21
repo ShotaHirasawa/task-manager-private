@@ -1,6 +1,6 @@
 # {TICKET-KEY}: {件名}
 
-- **URL**: https://{backlog-space}.backlog.com/view/{TICKET-KEY}
+- **Backlogチケット知見**: [{TICKET-KEY}]({TICKET-KEY}.md)
 - **状態**: {未対応/処理中/完了}
 - **優先度**: {高/中/低}
 - **担当者**: {名前}

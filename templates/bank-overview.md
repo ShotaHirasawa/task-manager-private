@@ -1,7 +1,7 @@
 # {銀行名} 全体感 & 現在地
 
 - **更新日**: YYYY-MM-DD
-- **Backlogプロジェクト**: [{PROJECT-KEY}](https://{backlog-space}.backlog.com/projects/{PROJECT-KEY})
+- **Backlogチケット知見**: [{PROJECT-KEY}](../../knowledge/backlog/{PROJECT-KEY}/README.md)
 
 ## プロジェクト概要
 
