@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TID Workboard</title>
+  <style>
+    :root { --ink: #1e2b36; --muted: #61717b; --line: #d7e1e0; --paper: #f7faf8; --panel: #ffffff; --teal: #007a78; --amber: #ae5a00; --red: #b42318; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 15px/1.5 "Yu Gothic UI", "Meiryo", sans-serif; }
+    main { max-width: 1440px; margin: 0 auto; padding: 28px 32px 48px; }
+    header { display: flex; justify-content: space-between; align-items: end; border-bottom: 2px solid var(--ink); padding-bottom: 18px; gap: 24px; }
+    h1, h2, p { margin: 0; } h1 { font-size: 28px; } h2 { font-size: 19px; } .subtitle, .metadata { color: var(--muted); }
+    .metadata { font-size: 13px; text-align: right; }
+    section { margin-top: 28px; } .notice { border-left: 4px solid var(--amber); background: #fff8e8; padding: 12px 16px; color: #684000; }
+    .summary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    .metric, .project { background: var(--panel); border: 1px solid var(--line); padding: 16px; border-radius: 6px; }
+    .metric strong { display: block; margin-top: 5px; font-size: 26px; } .metric span { color: var(--muted); font-size: 13px; }
+    .table-wrap { overflow-x: auto; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; }
+    table { width: 100%; border-collapse: collapse; min-width: 960px; } th, td { text-align: left; padding: 12px; vertical-align: top; border-bottom: 1px solid var(--line); } th { background: #edf5f3; font-size: 13px; } tr:last-child td { border-bottom: 0; }
+    .empty { padding: 32px; color: var(--muted); text-align: center; } .projects { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    .project h3 { font-size: 17px; margin: 0 0 10px; } .project dl { display: grid; grid-template-columns: 74px 1fr; margin: 12px 0 0; font-size: 14px; } dt { color: var(--muted); } dd { margin: 0; }
+    .tag { display: inline-block; border-radius: 3px; padding: 2px 7px; font-size: 12px; font-weight: 700; background: #e5f3f1; color: #075f5b; } .tag.alert { background: #fff1df; color: var(--amber); }
+    a { color: #006d83; } @media (max-width: 760px) { main { padding: 20px 16px; } header { display: block; } .metadata { margin-top: 8px; text-align: left; } .summary, .projects { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div><h1>TID Workboard</h1><p class="subtitle">TIDチームが抱える Jira / 銀行 Backlog タスクと銀行別プロジェクトの現在地</p></div>
+      <p class="metadata" id="updated-at"></p>
+    </header>
+
+    <section class="notice" id="sync-notice"></section>
+    <section><div class="summary" id="summary"></div></section>
+
+    <section>
+      <h2>TID タスク</h2>
+      <div class="table-wrap"><table><thead><tr><th>タスク</th><th>原本</th><th>分類</th><th>ゴール・背景</th><th>現在地</th><th>予定日</th><th>担当ボール</th><th>関連情報</th></tr></thead><tbody id="task-rows"></tbody></table></div>
+    </section>
+
+    <section>
+      <h2>銀行別プロジェクト</h2>
+      <div class="projects" id="projects"></div>
+    </section>
+  </main>
+  <script src="data/tid-dashboard-data.js"></script>
+  <script>
+    const data = window.TID_DASHBOARD_DATA;
+    const escapeHtml = (value) => String(value || "-").replace(/[&<>'"]/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", "\"": "&quot;" })[character]);
+    const taskRows = document.getElementById("task-rows");
+    document.getElementById("updated-at").textContent = `最終更新: ${data.updatedAt}`;
+    document.getElementById("sync-notice").textContent = data.backlogSync.message + " " + data.jiraSync.message;
+    const activeTasks = data.tasks.filter((task) => task.status !== "done");
+    document.getElementById("summary").innerHTML = [
+      ["管理中タスク", activeTasks.length, "Jira / 銀行 Backlogの未完了タスク"],
+      ["PRDボール", activeTasks.filter((task) => task.ballOwner === "TID PRD").length, "TID PRDが次に動くタスク"],
+      ["要対応プロジェクト", data.projects.filter((project) => project.status === "要対応").length, "注意が必要な銀行案件"]
+    ].map(([label, count, hint]) => `<article class="metric"><span>${label}</span><strong>${count}</strong><span>${hint}</span></article>`).join("");
+    taskRows.innerHTML = activeTasks.length ? activeTasks.map((task) => `<tr><td><a href="${escapeHtml(task.detailPath)}">${escapeHtml(task.key)}: ${escapeHtml(task.title)}</a></td><td>${escapeHtml(task.source)}</td><td>${escapeHtml(task.classification)}</td><td>${escapeHtml(task.goal)}<br><small>${escapeHtml(task.background)}</small></td><td>${escapeHtml(task.currentStatus)}<br><small>Backlog担当: ${escapeHtml(task.backlogAssignee || "未設定")}</small></td><td>${escapeHtml(task.dueDate)}</td><td><span class="tag">${escapeHtml(task.ballOwner)}</span></td><td><a href="${escapeHtml(task.backlogUrl)}" target="_blank" rel="noreferrer">Backlog</a></td></tr>`).join("") : `<tr><td class="empty" colspan="8">タスクはまだ取り込まれていません。接続情報またはチケット一覧を受け取ると、AIが根拠付きでここを更新します。</td></tr>`;
+    document.getElementById("projects").innerHTML = data.projects.map((project) => `<article class="project"><h3>${escapeHtml(project.bank)} / ${escapeHtml(project.name)}</h3><span class="tag${project.status === "要対応" ? " alert" : ""}">${escapeHtml(project.status)}</span><dl><dt>ゴール</dt><dd>${escapeHtml(project.goal)}</dd><dt>工程</dt><dd>${escapeHtml(project.phase)}</dd><dt>予定日</dt><dd>${escapeHtml(project.releaseDate)}</dd></dl><p><a href="${escapeHtml(project.detailPath)}">詳細を見る</a></p></article>`).join("");
+  </script>
+</body>
+</html>
