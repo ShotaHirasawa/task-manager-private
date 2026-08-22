@@ -1,7 +1,7 @@
 # {銀行名} 全体感 & 現在地
 
 - **更新日**: YYYY-MM-DD
-- **Backlogチケット知見**: [{PROJECT-KEY}](../../knowledge/backlog/{PROJECT-KEY}/README.md)
+- **Backlogチケット知見**: [{PROJECT-KEY}](../../knowledge/nulab-backlog/{PROJECT-KEY}/README.md)
 
 ## プロジェクト概要
 
@@ -15,11 +15,7 @@
 
 - 
 
-### 残っている主要タスク
-
-| 優先 | 課題 | 状態 | 期限 | 内容・根拠 |
-|---|---|---|---|---|
-|  |  |  |  |  |
+個別タスクの状態、期限、担当ボールは [Nulab Backlogチケット知見](../../knowledge/nulab-backlog/{PROJECT-KEY}/) を参照する。
 
 ### 現在地のまとめ
 
@@ -27,6 +23,7 @@
 
 ## 関連リンク
 
+- [Nulab Backlogチケット知見](../../knowledge/nulab-backlog/{PROJECT-KEY}/)
 - Backlog: 
 - Slack: 
 - Miro: 
